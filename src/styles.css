@@ -1,0 +1,51 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+body {
+  background-color: black;
+}
+
+.in {
+  display: inline-block;
+  width: 200px;
+  border-radius: 10px;
+  margin: 4px;
+}
+.submit {
+  border: none;
+  background-color: blue;
+  color: white;
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 30%;
+}
+
+/* viewComponent css */
+#form1 {
+  width: 500px;
+  margin-left: 30%;
+  margin-top: 5%;
+  font-size: medium;
+  border: 1px solid salmon;
+  background-color: orange;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+/* addComponents */
+#form {
+  width: 400px;
+  margin-left: 40%;
+  margin-top: 10%;
+  border: 1px solid salmon;
+  background-color: orange;
+  padding: 30px;
+}
+label {
+  width: 100px;
+  text-align: left;
+  margin: 4px;
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "name": "Vetrivel",
+    "email": "velvetribe223@gmail.com",
+    "phone": "8220905841",
+    "address": "Krishnagiri"
+  },
+  {
+    "id": "2",
+    "name": "Sakthi",
+    "email": "sakthi200@gmail.com",
+    "phone": "8290565841",
+    "address": "Trichy"
+  },
+  {
+    "id": "3",
+    "name": "Kalai",
+    "email": "kalaiyarasan201@gmail.com",
+    "phone": "9988674320",
+    "address": "Coimbatore"
+  }
+]
