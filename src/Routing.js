@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Add from "./Components/Add";
 import View from "./Components/View";
 import Edit from "./Components/Edit";
+import Search from "./Components/Search";
 
 const Routing = () => {
   return (
@@ -16,6 +17,7 @@ const Routing = () => {
           <Route path="/add" element={<Add />} />
           <Route path="/view/:id" element={<View />} />
           <Route path="/edit/:id" element={<Edit />} />
+             <Route path="/search" element={<Search />} />
           <Route path="*" element={<Home />} />
         </Routes>
         <ToastContainer />
