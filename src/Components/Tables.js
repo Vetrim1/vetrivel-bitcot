@@ -1,21 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
+let initialValue = { id: "", name: "", email: "", address: "", phone: "" };
+
 const Tables = (props) => {
-  console.log(props.data);
+  //  console.log(props.data);
 
   //let [users, setUsers] = useState(props.data);
-  let [a, setUsers] = useState(props.data);
+  let [Users, setUsers] = useState(props.data);
   // setUsers(props.data);
   // console.log(users);
 
   let navigate = useNavigate();
 
-  let handleEdit = (id) => {
-    navigate(`/edit/${id}`);
+  const [currentuser, setCurrentuser] = useState(initialValue);
+  //console.log(currentuser);
+  const [upd, setUp] = useState();
+
+  let handleEdit = (a) => {
+    var getDatas = {
+      id: a.id,
+      name: a.name,
+      email: a.email,
+      address: a.address,
+      phone: a.phone
+    };
+    console.log(getDatas);
+
+    setCurrentuser(getDatas);
+    setUp(getDatas);
+
+    console.log(currentuser);
+    console.log(upd);
+  };
+
+  let UpdateUser = (id, UpdatedUser) => {
+    setUsers(Users.map((item) => (item.id === id ? UpdatedUser : item)));
   };
 
   let handleView = (id) => {
@@ -25,8 +48,8 @@ const Tables = (props) => {
   //To find the index with the help of id & use splice method to remove it & set it useStates
   let handleDelete = (id) => {
     if (window.confirm("Are you sure")) {
-      var IndexFind = a.map((e) => e.id).indexOf(id);
-      let remainFind = [...a];
+      var IndexFind = Users.map((e) => e.id).indexOf(id);
+      let remainFind = [...Users];
       remainFind.splice(IndexFind, 1);
       setUsers(remainFind);
       toast.success("Deleted Successfully");
@@ -41,11 +64,11 @@ const Tables = (props) => {
           style={{ marginLeft: "100px", color: "skyblue", fontSize: "14px" }}
           Scrollamount="10"
         >
-          I done CRUD operations (View,Delete,Create,Update).Thank you bitcot &
-          Nishita mam giving me this Opportunity to prove myself....
+          I done CRUD operations (View,Delete,Create,Update).Thank you for
+          giving me this Opportunity to prove myself....
         </marquee>
 
-        {a.map((a, i) => {
+        {Users.map((a, i) => {
           console.log(a);
 
           return (
@@ -59,7 +82,7 @@ const Tables = (props) => {
                     {++i}
                   </th>
                   <th>
-                    <div className="text-center" style={{ fontSize: "50px" }}>
+                    <div className="text-center" style={{ fontSize: "80px" }}>
                       <i class="bi bi-person-circle"></i>
                     </div>
                   </th>
@@ -84,7 +107,9 @@ const Tables = (props) => {
                             type="button"
                             className="btn btn-light "
                             style={{ fontSize: "20px" }}
-                            onClick={() => handleEdit(a.id)}
+                            onClick={() => handleEdit(a)}
+                            currentuser={currentuser}
+                            UpdateUser={UpdateUser}
                           >
                             <i className="bi bi-pen-fill"></i>
                           </button>

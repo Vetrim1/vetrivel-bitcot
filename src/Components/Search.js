@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Datas from "./Datas.json";
-import Tables from "./Tables";
 
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
@@ -30,6 +29,10 @@ const Search = () => {
   };
 
   //button Actions
+  let navigate = useNavigate();
+  let handleEdit = (id) => {
+    navigate(`/edit/${id}`);
+  };
 
   return (
     <>
@@ -54,6 +57,7 @@ const Search = () => {
                     data-tooltip-id="create"
                     data-tooltip-content="Create"
                     className="bi bi-plus-circle-fill"
+                    style={{ color: "white" }}
                   ></i>
                 </Link>
               </h5>
@@ -63,7 +67,7 @@ const Search = () => {
             className=" m-auto col-sm-4 col-12 text-center input-group mb-3"
             style={{ width: "40%" }}
           >
-            <Link to="/search">
+            <Link to="/search" style={{ textDecoration: "none" }}>
               <input
                 type="search"
                 className="form-control"

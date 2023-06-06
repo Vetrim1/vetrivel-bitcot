@@ -1,30 +1,36 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-//import Datas from "./Datas.json";
+import Datas from "./Datas.json";
 
-//let initialValue = { id: "", name: "", email: "", phone: "", address: "" };
+let initialValue = { id: "", name: "", email: "", phone: "", address: "" };
 
-const Edit = (props) => {
+const Edit = () => {
+  const [edi, setEdit] = useState(Datas);
+  const [adata2, addData2] = useState(initialValue);
+  const [upd, setUp] = useState();
+
   const navigate = useNavigate();
-  //const { id } = useParams();
+  const { id } = useParams();
+  useEffect(() => {
+    setUp(edi);
+  }, []);
 
-  console.log(props.currentuser);
-
-  //////////////////
-  const [cuser, setCuser] = useState(props.currentuser);
-  console.log(cuser);
+  useEffect(() => {
+    console.log(edi);
+    let filterData = Object.values(edi).filter((a) => a.id == id);
+    filterData.map((a) => setEdit(a));
+  }, []);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
-    setCuser({ ...cuser, [name]: value });
+    addData2({ ...adata2, [name]: value });
   };
 
   const addSubmitHandler = (e) => {
     e.preventDefault();
-    props.UpdateUser(cuser.id, cuser);
+
     navigate("/");
-    toast.success("User Updated Successfully");
   };
 
   return (
@@ -33,26 +39,17 @@ const Edit = (props) => {
         id="form"
         className="justify-content-center"
         onSubmit={addSubmitHandler}
+        edit={edi}
+        setEdit={setEdit}
       >
         <h4>Edit Your Details</h4>
         <fieldset>
-          <label>Id :</label>
-          <input
-            className="in"
-            type="number"
-            name="id"
-            value={cuser.id}
-            htmlFor="id"
-            required
-            onChange={handleInput}
-          />
-          <br />
           <label>Name :</label>
           <input
             className="in"
             type="text"
             name="name"
-            value={cuser.name}
+            value={edi.name}
             htmlFor="name"
             spellCheck="true"
             required
@@ -64,7 +61,7 @@ const Edit = (props) => {
             className="in"
             type="text"
             name="address"
-            value={cuser.email}
+            value={edi.email}
             htmlFor="address"
             spellCheck="true"
             required
@@ -76,7 +73,7 @@ const Edit = (props) => {
             className="in"
             type="address"
             name="city"
-            value={cuser.address}
+            value={edi.address}
             htmlFor="city"
             required
             onChange={handleInput}
@@ -87,7 +84,7 @@ const Edit = (props) => {
             className="in"
             type="tel"
             name="phone"
-            value={cuser.phone}
+            value={edi.phone}
             htmlFor="pincode"
             maxLength="10"
             required
@@ -99,7 +96,6 @@ const Edit = (props) => {
             <Link to="/">
               <input className="submit" type="button" value="Back" />
             </Link>
-
             <input className="submit" type="submit" value={"Update"} />
           </div>
         </fieldset>

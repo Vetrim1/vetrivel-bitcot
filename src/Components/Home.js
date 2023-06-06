@@ -32,6 +32,7 @@ const Home = () => {
                     data-tooltip-id="create"
                     data-tooltip-content="Create"
                     className="bi bi-plus-circle-fill"
+                    style={{ color: "white" }}
                   ></i>
                 </Link>
               </h5>
@@ -41,7 +42,7 @@ const Home = () => {
             className=" m-auto col-sm-4 col-12 text-center input-group mb-3"
             style={{ width: "40%" }}
           >
-            <Link to="/search">
+            <Link to="/search" style={{ textDecoration: "none" }}>
               <input
                 type="search"
                 className="form-control"
@@ -51,7 +52,6 @@ const Home = () => {
               />
             </Link>
           </div>
-          {/* {Datas && Datas.map((item) => <Tables data={item} />)} */}
           <Tables data={Datas} />
         </div>
       </div>
