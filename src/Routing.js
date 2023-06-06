@@ -17,7 +17,7 @@ const Routing = () => {
           <Route path="/add" element={<Add />} />
           <Route path="/view/:id" element={<View />} />
           <Route path="/edit/:id" element={<Edit />} />
-             <Route path="/search" element={<Search />} />
+          <Route path="/search" element={<Search />} />
           <Route path="*" element={<Home />} />
         </Routes>
         <ToastContainer />

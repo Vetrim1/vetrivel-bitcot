@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Data from "./Datas.json";
 import Tables from "./Tables";
@@ -8,16 +8,7 @@ import "react-tooltip/dist/react-tooltip.css";
 
 const Home = () => {
   const [Datas, setData] = useState(Data);
-  const [Input, setInput] = useState("");
 
-  var onSearchHandler = (event) => {
-    setInput(event.target.value);
-    setData((prev) => {
-      return prev.filter((item) =>
-        item.name.toLowerCase().includes(Input.toLowerCase())
-      );
-    });
-  };
   return (
     <>
       <div className="container mt-4">
@@ -50,16 +41,17 @@ const Home = () => {
             className=" m-auto col-sm-4 col-12 text-center input-group mb-3"
             style={{ width: "40%" }}
           >
-            <input
-              type="search"
-              className="form-control"
-              placeholder="Search"
-              aria-label="Search"
-              aria-describedby="basic-addon2"
-              onChange={(e) => onSearchHandler(e)}
-            />
+            <Link to="/search">
+              <input
+                type="search"
+                className="form-control"
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="basic-addon2"
+              />
+            </Link>
           </div>
-
+          {/* {Datas && Datas.map((item) => <Tables data={item} />)} */}
           <Tables data={Datas} />
         </div>
       </div>

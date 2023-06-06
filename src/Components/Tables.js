@@ -7,9 +7,10 @@ import "react-tooltip/dist/react-tooltip.css";
 const Tables = (props) => {
   console.log(props.data);
 
-  let [users, setUsers] = useState(props.data);
-  setUsers(props.data);
-  console.log(users);
+  //let [users, setUsers] = useState(props.data);
+  let [a, setUsers] = useState(props.data);
+  // setUsers(props.data);
+  // console.log(users);
 
   let navigate = useNavigate();
 
@@ -24,8 +25,8 @@ const Tables = (props) => {
   //To find the index with the help of id & use splice method to remove it & set it useStates
   let handleDelete = (id) => {
     if (window.confirm("Are you sure")) {
-      var IndexFind = users.map((e) => e.id).indexOf(id);
-      let remainFind = [...users];
+      var IndexFind = a.map((e) => e.id).indexOf(id);
+      let remainFind = [...a];
       remainFind.splice(IndexFind, 1);
       setUsers(remainFind);
       toast.success("Deleted Successfully");
@@ -44,7 +45,9 @@ const Tables = (props) => {
           Nishita mam giving me this Opportunity to prove myself....
         </marquee>
 
-        {users.map((a, i) => {
+        {a.map((a, i) => {
+          console.log(a);
+
           return (
             <div className="table-responsive">
               <table
